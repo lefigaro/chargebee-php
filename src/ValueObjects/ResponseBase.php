@@ -1,7 +1,7 @@
 <?php
 
 namespace Chargebee\ValueObjects;
-define('IDEMPOTENCY_REPLAY_HEADER', 'chargebee-idempotency-replayed');
+define('v4_IDEMPOTENCY_REPLAY_HEADER', 'chargebee-idempotency-replayed');
 
 class ResponseBase
 {
@@ -24,8 +24,8 @@ class ResponseBase
     public function isIdempotencyReplayed(): bool
     {   
         $headers = $this->responseHeaders;
-        if (isset($headers[IDEMPOTENCY_REPLAY_HEADER])) {
-            $value = $headers[IDEMPOTENCY_REPLAY_HEADER][0];
+        if (isset($headers[v4_IDEMPOTENCY_REPLAY_HEADER])) {
+            $value = $headers[v4_IDEMPOTENCY_REPLAY_HEADER][0];
             return  boolval($value);
         }
         return false;
